@@ -22,6 +22,7 @@ def lambda_handler(event, context):
 
     text = ""
     error = ""
+    confidence = None
     is_body_valid = is_valid_base64(base64_body)
 
     if is_body_valid:
@@ -31,8 +32,13 @@ def lambda_handler(event, context):
             Payload=json.dumps({"body": base64_body})
         )
 
-        if 'text' in response:
-            text = response['text']
+        response_payload = json.loads(response['Payload'].read().decode('utf-8'))
+
+        print(response_payload)
+
+        if 'text' in response_payload:
+            text = response_payload['text']
+            confidence = response_payload['confidence']
         else:
             error = "Failed to extract text."
     else:
@@ -43,6 +49,7 @@ def lambda_handler(event, context):
         "body": json.dumps({
             "valid_body": is_body_valid,
             "text": text,
+            "confidence": confidence,
             "error": error,
         }),
     }

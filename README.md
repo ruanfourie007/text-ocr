@@ -1,7 +1,8 @@
 
 ## Status
 
-Fixing encoding of image content passed to OCR tools.
+Textract is working, everything still hacky.
+Tesseract is now being worked on.
 
 ### Endpoint
 

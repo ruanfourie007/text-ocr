@@ -14,6 +14,12 @@ class OcrResult:
         self.text = text
         self.confidence = confidence
 
+    def to_dict(self):
+        return {
+            "text": self.text,
+            "confidence": self.confidence
+        }
+
 
 def lambda_handler(event, context):
 
@@ -51,7 +57,7 @@ def lambda_handler(event, context):
         print(e)
         pass
 
-    print(json.dumps(ocr_results))
+    print(ocr_results)
 
     # Return most confident result.
-    return max(ocr_results, key=lambda ocr_result: ocr_result.confidence)
+    return max(ocr_results, key=lambda ocr_result: ocr_result.confidence).to_dict()
