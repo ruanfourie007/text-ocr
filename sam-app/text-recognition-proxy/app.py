@@ -28,7 +28,7 @@ def lambda_handler(event, context):
         response = lambda_client.invoke(
             FunctionName="sam-app-TextRecogFunction-rPvJ5r2opfSU",
             InvocationType='RequestResponse',
-            Payload=base64_body.encode('utf-8')
+            Payload=json.dumps({"base64_body": base64_body})
         )
 
         if 'text' in response:
