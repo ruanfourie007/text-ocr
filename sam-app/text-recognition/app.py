@@ -7,6 +7,8 @@ import io
 from PIL import Image
 import pytesseract
 
+pytesseract.pytesseract.tesseract_cmd = '/opt/bin/tesseract'
+
 client = boto3.client('textract')
 
 class OcrResult:
@@ -35,9 +37,13 @@ def lambda_handler(event, context):
     image = Image.open(io.BytesIO(image_data))
 
     # Perform OCR using pytesseract
-    #text = pytesseract.image_to_string(image)
+    try:
 
-    #print(f"{text=}")
+        text = pytesseract.image_to_string(image)
+        print(f"tesseract {text=}")
+    except Exception as e:
+        print(e)
+        pass
 
     # Perform OCR using textract
     try:
@@ -57,7 +63,8 @@ def lambda_handler(event, context):
         print(e)
         pass
 
-    print(ocr_results)
+    for ocr_result in ocr_results:
+        print("OCR result:", ocr_result.to_dict())
 
     # Return most confident result.
     return max(ocr_results, key=lambda ocr_result: ocr_result.confidence).to_dict()
