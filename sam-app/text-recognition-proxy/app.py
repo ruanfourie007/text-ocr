@@ -26,11 +26,9 @@ def lambda_handler(event, context):
 
     if is_body_valid:
         response = lambda_client.invoke(
-            FunctionName="sam-app-TextRecogProxyFunction-dRR4gqzXUjGe",
+            FunctionName="sam-app-TextRecogFunction-rPvJ5r2opfSU",
             InvocationType='RequestResponse',
-            Payload={
-                'body': base64_body,
-            }
+            Payload=base64_body.encode('utf-8')
         )
 
         if 'text' in response:
