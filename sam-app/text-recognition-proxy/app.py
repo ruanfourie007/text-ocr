@@ -49,7 +49,6 @@ def lambda_handler(event, context):
     return {
         "statusCode": 200,
         "body": json.dumps({
-            "valid_base64_body": is_valid_base64_body,
             "text": text,
             "confidence": confidence,
             "error": error,
