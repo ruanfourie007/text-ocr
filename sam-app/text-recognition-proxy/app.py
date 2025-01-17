@@ -24,21 +24,27 @@ def lambda_handler(event, context):
     error = ""
     is_body_valid = is_valid_base64(base64_body)
 
+    if is_body_valid:
+        response = lambda_client.invoke(
+            FunctionName="sam-app-TextRecogProxyFunction-dRR4gqzXUjGe",
+            InvocationType='RequestResponse',
+            Payload={
+                'body': base64_body,
+            }
+        )
 
-
-    response = lambda_client.invoke(
-        FunctionName="sam-app-TextRecogProxyFunction-dRR4gqzXUjGe",
-        InvocationType='RequestResponse',
-        Payload=event
-    )
-
-    print(f"{response=}")
+        if 'text' in response:
+            text = response['text']
+        else:
+            error = "Failed to extract text."
+    else:
+        error = "Invalid base64 body."
 
     return {
         "statusCode": 200,
         "body": json.dumps({
-            "text": text,
             "valid_body": is_body_valid,
+            "text": text,
             "error": error,
         }),
     }

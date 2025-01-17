@@ -19,7 +19,6 @@ def lambda_handler(event, context):
     text = pytesseract.image_to_string(base64.b64decode(base64_content))
 
     # Perform OCR using textract
-    text = pytesseract.image_to_string(base64.b64decode(base64_content))
     try:
         response = client.detect_document_text(
             Document={
