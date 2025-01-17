@@ -5,7 +5,10 @@ Textract is working, Tesseract now responds as expected, however not with a good
 
 For Tesseract a layer was added manually outside of this repo to get the required binaries on lambda.
 
-Limited testing was done on samples, this is a basic POC and hopefully sufficient for the evaluation :-)
+### Caveats (based on absolute POC):
+- Testing was limited to 1 image.
+- Tests not updated/considered past what was generated.
+- Resources and naming in generally not cleaned up.
 
 ### Screenshot
 ![ocr_postman_screenshot.png](ocr_postman_screenshot.png)
