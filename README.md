@@ -8,11 +8,10 @@ For Tesseract a layer was added manually outside of this repo to get the require
 Limited testing was done on samples, this is a basic POC and hopefully sufficient for the evaluation :-)
 
 ### Screenshot
-
 ![ocr_postman_screenshot.png](ocr_postman_screenshot.png)
 
-### Endpoint
 
+### Endpoint
 POST:
 https://ayki8u1vsl.execute-api.eu-central-1.amazonaws.com/Prod/get-image-text/
 
