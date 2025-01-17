@@ -19,7 +19,7 @@ Resources:
     Properties:
       CodeUri: text-recognition-proxy/
       Layers:
-        - "arn:aws:lambda:eu-central-1:606029206155:layer:tesseract-binary:2"
+        - "arn:aws:lambda:eu-central-1:606029206155:layer:tesseract-binary:3"
       Handler: app.lambda_handler
       Runtime: python3.13
       Architectures:

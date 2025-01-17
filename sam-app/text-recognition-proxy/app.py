@@ -4,6 +4,9 @@ import boto3
 
 lambda_client = boto3.client('lambda')
 
+def image_preprocessing(image):
+    # TODO: Perform necessary processing before sending to OCR API's
+    return image
 
 def is_valid_base64(content):
     try:
@@ -24,6 +27,9 @@ def lambda_handler(event, context):
     is_valid_base64_body = is_valid_base64(base64_body)
 
     if is_valid_base64_body:
+
+        base64_body = image_preprocessing(base64_body)
+
         response = lambda_client.invoke(
             FunctionName="sam-app-TextRecogFunction-rPvJ5r2opfSU",
             InvocationType='RequestResponse',
@@ -31,8 +37,6 @@ def lambda_handler(event, context):
         )
 
         response_payload = json.loads(response['Payload'].read().decode('utf-8'))
-
-        print(response_payload)
 
         if 'text' in response_payload:
             text = response_payload['text']
