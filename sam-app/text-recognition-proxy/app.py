@@ -18,14 +18,12 @@ def is_valid_base64(content):
 def lambda_handler(event, context):
     base64_body = event['body']
 
-    print(f"{base64_body=}")
-
     text = ""
-    error = ""
+    error = None
     confidence = None
-    is_body_valid = is_valid_base64(base64_body)
+    is_valid_base64_body = is_valid_base64(base64_body)
 
-    if is_body_valid:
+    if is_valid_base64_body:
         response = lambda_client.invoke(
             FunctionName="sam-app-TextRecogFunction-rPvJ5r2opfSU",
             InvocationType='RequestResponse',
@@ -47,7 +45,7 @@ def lambda_handler(event, context):
     return {
         "statusCode": 200,
         "body": json.dumps({
-            "valid_body": is_body_valid,
+            "valid_base64_body": is_valid_base64_body,
             "text": text,
             "confidence": confidence,
             "error": error,
