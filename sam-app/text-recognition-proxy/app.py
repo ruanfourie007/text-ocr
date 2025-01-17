@@ -1,7 +1,5 @@
 import json
-
 import base64
-
 import boto3
 
 lambda_client = boto3.client('lambda')
@@ -26,8 +24,10 @@ def lambda_handler(event, context):
     error = ""
     is_body_valid = is_valid_base64(base64_body)
 
+
+
     response = lambda_client.invoke(
-        FunctionName="sam-app-OcrTextractFunction-Es4oZGh8wtjf",
+        FunctionName="sam-app-TextRecogProxyFunction-dRR4gqzXUjGe",
         InvocationType='RequestResponse',
         Payload=event
     )

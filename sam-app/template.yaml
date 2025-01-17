@@ -60,7 +60,7 @@ Outputs:
     Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/get-image-text/"
   TextRecogProxyFunction:
     Description: Hello World Lambda Function ARN
-    Value: !GetAtt OcrApiFunction.Arn
+    Value: !GetAtt TextRecogProxyFunction.Arn
   TextRecogProxyFunctionIamRole:
     Description: Implicit IAM Role created for Hello World function
-    Value: !GetAtt OcrApiFunctionRole.Arn
+    Value: !GetAtt TextRecogProxyFunctionRole.Arn

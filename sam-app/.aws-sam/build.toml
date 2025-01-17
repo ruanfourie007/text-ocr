@@ -7,7 +7,7 @@ architecture = "x86_64"
 handler = "app.lambda_handler"
 manifest_hash = "614f61ea57f836f97f7b6c83cd5edc96"
 packagetype = "Zip"
-functions = ["OcrTextractFunction"]
+functions = ["TextRecogFunction"]
 
 [function_build_definitions.ea0e8287-401d-414b-acbd-2f1fbb5aa142]
 codeuri = "/Users/ruanfourie/Projects/text-ocr/sam-app/text-recognition-proxy"
@@ -16,6 +16,6 @@ architecture = "x86_64"
 handler = "app.lambda_handler"
 manifest_hash = "899643806230f3e89aa3bcd400e91f6f"
 packagetype = "Zip"
-functions = ["OcrApiFunction"]
+functions = ["TextRecogProxyFunction"]
 
 [layer_build_definitions]
