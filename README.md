@@ -8,7 +8,7 @@ For Tesseract a layer was added manually outside of this repo to get the require
 ### Caveats (based on absolute POC):
 - Testing was limited to 1 image.
 - Tests not updated/considered past what was generated.
-- Resources and naming in generally not cleaned up.
+- Resources and naming in general not cleaned up.
 
 ### Screenshot
 ![ocr_postman_screenshot.png](ocr_postman_screenshot.png)
